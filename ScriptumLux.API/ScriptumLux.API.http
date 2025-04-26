@@ -1,0 +1,6 @@
+@ScriptumLux.API_HostAddress = http://localhost:5292
+
+GET {{ScriptumLux.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

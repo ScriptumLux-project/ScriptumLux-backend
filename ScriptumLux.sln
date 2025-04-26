@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptumLux.API", "ScriptumLux.API\ScriptumLux.API.csproj", "{289F85FB-C458-40AB-9F4C-F4710F8E9789}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptumLux.DAL", "ScriptumLux.DAL\ScriptumLux.DAL.csproj", "{74423521-D63D-4446-97B6-9C3BDBA16239}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptumLux.BLL", "ScriptumLux.BLL\ScriptumLux.BLL.csproj", "{345960D3-D13D-454D-89D3-940893A15D4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{289F85FB-C458-40AB-9F4C-F4710F8E9789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{289F85FB-C458-40AB-9F4C-F4710F8E9789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{289F85FB-C458-40AB-9F4C-F4710F8E9789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{289F85FB-C458-40AB-9F4C-F4710F8E9789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74423521-D63D-4446-97B6-9C3BDBA16239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74423521-D63D-4446-97B6-9C3BDBA16239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74423521-D63D-4446-97B6-9C3BDBA16239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74423521-D63D-4446-97B6-9C3BDBA16239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{345960D3-D13D-454D-89D3-940893A15D4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{345960D3-D13D-454D-89D3-940893A15D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{345960D3-D13D-454D-89D3-940893A15D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{345960D3-D13D-454D-89D3-940893A15D4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
