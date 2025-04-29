@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
@@ -22,15 +23,6 @@
 
     <ItemGroup>
       <Folder Include="Controllers\" />
-      <Folder Include="DTOs\Comment\" />
-      <Folder Include="DTOs\Genre\" />
-      <Folder Include="DTOs\History\" />
-      <Folder Include="DTOs\Movie\" />
-      <Folder Include="DTOs\PlaylistMovie\" />
-      <Folder Include="DTOs\Playlist\" />
-      <Folder Include="DTOs\Review\" />
-      <Folder Include="DTOs\Timecode\" />
-      <Folder Include="DTOs\User\" />
     </ItemGroup>
 
 </Project>

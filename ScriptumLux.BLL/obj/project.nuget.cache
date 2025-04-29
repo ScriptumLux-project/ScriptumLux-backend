@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "/8oUmxqgWG0=",
+  "dgSpecHash": "l79LbnVvPqk=",
   "success": true,
   "projectFilePath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\greko\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\greko\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\greko\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\greko\\.nuget\\packages\\microsoft.data.sqlite.core\\9.0.4\\microsoft.data.sqlite.core.9.0.4.nupkg.sha512",
     "C:\\Users\\greko\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.4\\microsoft.entityframeworkcore.9.0.4.nupkg.sha512",
     "C:\\Users\\greko\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.4\\microsoft.entityframeworkcore.abstractions.9.0.4.nupkg.sha512",
