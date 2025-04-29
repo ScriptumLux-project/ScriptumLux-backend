@@ -22,7 +22,15 @@
 
     <ItemGroup>
       <Folder Include="Controllers\" />
-      <Folder Include="DTOs\" />
+      <Folder Include="DTOs\Comment\" />
+      <Folder Include="DTOs\Genre\" />
+      <Folder Include="DTOs\History\" />
+      <Folder Include="DTOs\Movie\" />
+      <Folder Include="DTOs\PlaylistMovie\" />
+      <Folder Include="DTOs\Playlist\" />
+      <Folder Include="DTOs\Review\" />
+      <Folder Include="DTOs\Timecode\" />
+      <Folder Include="DTOs\User\" />
     </ItemGroup>
 
 </Project>
