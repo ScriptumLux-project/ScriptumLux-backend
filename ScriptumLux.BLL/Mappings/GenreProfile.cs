@@ -1,6 +1,16 @@
-namespace ScriptumLux.BLL.Mappings;
+using AutoMapper;
+using ScriptumLux.BLL.DTOs.Genre;
+using ScriptumLux.DAL.Entities;
 
-public class GenreProfile
+namespace ScriptumLux.BLL.Mappings
 {
-    
+    public class GenreProfile : Profile
+    {
+        public GenreProfile()
+        {
+            CreateMap<Genre, GenreDto>();
+            CreateMap<Genre, GenreCreateDto>().ReverseMap();
+            CreateMap<Genre, GenreUpdateDto>().ReverseMap();
+        }
+    }
 }

@@ -1,4 +1,4 @@
-namespace ScriptumLux.API.DTOs.Timecode;
+namespace ScriptumLux.BLL.DTOs.Timecode;
 
 public class TimecodeDto
 {

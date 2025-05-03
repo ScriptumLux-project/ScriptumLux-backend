@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ScriptumLux.API.DTOs.History;
+namespace ScriptumLux.BLL.DTOs.History;
 
 public class HistoryCreateDto
 {

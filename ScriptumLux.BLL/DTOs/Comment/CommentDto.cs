@@ -1,4 +1,4 @@
-namespace ScriptumLux.API.DTOs.Comment;
+namespace ScriptumLux.BLL.DTOs.Comment;
 
 public class CommentDto
 {

@@ -1,4 +1,4 @@
-namespace ScriptumLux.API.DTOs.History;
+namespace ScriptumLux.BLL.DTOs.History;
 
 public class HistoryDto
 {

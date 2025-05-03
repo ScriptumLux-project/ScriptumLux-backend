@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ScriptumLux.API.DTOs.User;
+namespace ScriptumLux.BLL.DTOs.User;
 
 public class UserCreateDto
 {

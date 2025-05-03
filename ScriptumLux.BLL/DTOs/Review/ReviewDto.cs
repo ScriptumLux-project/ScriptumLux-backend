@@ -1,4 +1,4 @@
-namespace ScriptumLux.API.DTOs.Review;
+namespace ScriptumLux.BLL.DTOs.Review;
 
 public class ReviewDto
 {

@@ -1,4 +1,4 @@
-namespace ScriptumLux.API.DTOs.User;
+namespace ScriptumLux.BLL.DTOs.User;
 
 public class UserDto
 {

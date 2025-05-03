@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ScriptumLux.API.DTOs.PlaylistMovie;
+namespace ScriptumLux.BLL.DTOs.PlaylistMovie;
 
 public class PlaylistMovieCreateDto
 {

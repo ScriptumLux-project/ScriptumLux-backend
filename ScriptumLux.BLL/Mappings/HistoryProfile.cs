@@ -1,6 +1,16 @@
-namespace ScriptumLux.BLL.Mappings;
+using AutoMapper;
+using ScriptumLux.BLL.DTOs.History;
+using ScriptumLux.DAL.Entities;
 
-public class HistoryProfile
+namespace ScriptumLux.BLL.Mappings
 {
-    
+    public class HistoryProfile : Profile
+    {
+        public HistoryProfile()
+        {
+            CreateMap<History, HistoryDto>();
+            CreateMap<History, HistoryCreateDto>().ReverseMap();
+            CreateMap<History, HistoryUpdateDto>().ReverseMap();
+        }
+    }
 }

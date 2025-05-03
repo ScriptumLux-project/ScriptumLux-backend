@@ -1,4 +1,4 @@
-namespace ScriptumLux.API.DTOs.Playlist;
+namespace ScriptumLux.BLL.DTOs.Playlist;
 
 public class PlaylistUpdateDto
 {

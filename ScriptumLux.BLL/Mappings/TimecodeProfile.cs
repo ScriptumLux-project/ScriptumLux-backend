@@ -1,6 +1,16 @@
-namespace ScriptumLux.BLL.Mappings;
+using AutoMapper;
+using ScriptumLux.BLL.DTOs.Timecode;
+using ScriptumLux.DAL.Entities;
 
-public class TimecodeProfile
+namespace ScriptumLux.BLL.Mappings
 {
-    
+    public class TimecodeProfile : Profile
+    {
+        public TimecodeProfile()
+        {
+            CreateMap<Timecode, TimecodeDto>();
+            CreateMap<Timecode, TimecodeCreateDto>().ReverseMap();
+            CreateMap<Timecode, TimecodeUpdateDto>().ReverseMap();
+        }
+    }
 }

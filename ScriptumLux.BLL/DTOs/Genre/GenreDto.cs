@@ -1,4 +1,4 @@
-namespace ScriptumLux.API.DTOs.Genre;
+namespace ScriptumLux.BLL.DTOs.Genre;
 
 public class GenreDto
 {

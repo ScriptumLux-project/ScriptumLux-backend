@@ -1,4 +1,4 @@
-namespace ScriptumLux.API.DTOs.PlaylistMovie;
+namespace ScriptumLux.BLL.DTOs.PlaylistMovie;
 
 public class PlaylistMovieDto
 {

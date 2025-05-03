@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ScriptumLux.API.DTOs.Movie;
+namespace ScriptumLux.BLL.DTOs.Movie;
 
 public class MovieCreateDto
 {
