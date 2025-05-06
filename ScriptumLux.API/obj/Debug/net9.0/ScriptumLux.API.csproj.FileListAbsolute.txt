@@ -160,3 +160,6 @@ C:\Users\greko\RiderProjects\ScriptumLux\ScriptumLux.API\obj\Debug\net9.0\refint
 C:\Users\greko\RiderProjects\ScriptumLux\ScriptumLux.API\obj\Debug\net9.0\ScriptumLux.API.pdb
 C:\Users\greko\RiderProjects\ScriptumLux\ScriptumLux.API\obj\Debug\net9.0\ScriptumLux.API.genruntimeconfig.cache
 C:\Users\greko\RiderProjects\ScriptumLux\ScriptumLux.API\obj\Debug\net9.0\ref\ScriptumLux.API.dll
+C:\Users\greko\RiderProjects\ScriptumLux\ScriptumLux.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\greko\RiderProjects\ScriptumLux\ScriptumLux.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\greko\RiderProjects\ScriptumLux\ScriptumLux.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

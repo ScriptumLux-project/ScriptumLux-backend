@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScriptumLux.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+510bbdf4f266d15afefb6b4da708a0895dcd3225")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8edc9b6e0e74c239e9431a3a2c0d646c48a581a9")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScriptumLux.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScriptumLux.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

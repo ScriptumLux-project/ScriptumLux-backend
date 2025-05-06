@@ -5,6 +5,11 @@ namespace ScriptumLux.DAL;
 
 public class ApplicationDbContext : DbContext
 {
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+
     public DbSet<User> Users { get; set; }
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Genre> Genres { get; set; }
@@ -14,11 +19,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<PlaylistMovie> PlaylistMovies { get; set; }
     public DbSet<History> HistoryRecords { get; set; }
     public DbSet<Timecode> Timecodes { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Data Source=application.db");
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
