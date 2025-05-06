@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "ct0KMoNmrtTOyXchj+7XkHDZQS9SvYE6E1IVtJxC+rs=",
+  "Source": "ScriptumLux.API",
+  "BasePath": "_content/ScriptumLux.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
