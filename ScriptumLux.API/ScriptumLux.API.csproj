@@ -21,8 +21,4 @@
       <ProjectReference Include="..\ScriptumLux.BLL\ScriptumLux.BLL.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
-
 </Project>
