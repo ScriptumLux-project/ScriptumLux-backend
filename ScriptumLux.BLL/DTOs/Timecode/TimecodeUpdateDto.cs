@@ -9,5 +9,6 @@ public class TimecodeUpdateDto
 
     public string Label { get; set; }
 
-    public TimeSpan? Timestamp { get; set; }
+    // Теперь строка, парсим вручную в сервисе
+    public string Timestamp { get; set; }
 }

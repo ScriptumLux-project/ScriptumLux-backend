@@ -4,15 +4,8 @@ namespace ScriptumLux.BLL.DTOs.Timecode;
 
 public class TimecodeCreateDto
 {
-    [Required]
-    public string Label { get; set; }
-
-    [Required]
-    public TimeSpan Timestamp { get; set; }
-
-    [Required]
+    public string Label { get; set; } = null!;
+    public string Timestamp { get; set; } = null!;
     public int UserId { get; set; }
-
-    [Required]
     public int MovieId { get; set; }
 }
