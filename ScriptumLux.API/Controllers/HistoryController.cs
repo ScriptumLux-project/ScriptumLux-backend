@@ -12,22 +12,31 @@ public class HistoryController : ControllerBase
     public HistoryController(IHistoryService service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
-    [HttpGet("{userId}/{movieId}")]
-    public async Task<IActionResult> Get(int userId, int movieId) => OkOrNotFound(await _service.GetByIdAsync(userId, movieId));
+    public async Task<ActionResult<IEnumerable<HistoryDto>>> GetAll()
+        => Ok(await _service.GetAllAsync());
+
+    [HttpGet("{userId:int}/{movieId:int}")]
+    public async Task<ActionResult<HistoryDto>> GetById(int userId, int movieId)
+    {
+        var dto = await _service.GetByIdAsync(userId, movieId);
+        return dto != null ? Ok(dto) : NotFound();
+    }
+
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] HistoryCreateDto dto)
+    public async Task<ActionResult<HistoryDto>> Create(HistoryCreateDto dto)
     {
         var created = await _service.CreateAsync(dto);
-        return CreatedAtAction(nameof(Get), new { userId = created.UserId, movieId = created.MovieId }, created);
+        return CreatedAtAction(nameof(GetById), new { userId = created.UserId, movieId = created.MovieId }, created);
     }
-    [HttpPut("{userId}/{movieId}")]
-    public async Task<IActionResult> Update(int userId, int movieId, [FromBody] HistoryUpdateDto dto) => OkOrNotFound(await _service.UpdateAsync(userId, movieId, dto));
-    [HttpDelete("{userId}/{movieId}")]
-    public async Task<IActionResult> Delete(int userId, int movieId) => (await _service.DeleteAsync(userId, movieId)) ? NoContent() : NotFound();
 
-    private IActionResult OkOrNotFound<T>(T? result) where T : class
+    [HttpPut("{userId:int}/{movieId:int}")]
+    public async Task<ActionResult<HistoryDto>> Update(int userId, int movieId, HistoryUpdateDto dto)
     {
-        return result != null ? Ok(result) : NotFound();
+        var updated = await _service.UpdateAsync(userId, movieId, dto);
+        return updated != null ? Ok(updated) : NotFound();
     }
+
+    [HttpDelete("{userId:int}/{movieId:int}")]
+    public async Task<IActionResult> Delete(int userId, int movieId)
+        => await _service.DeleteAsync(userId, movieId) ? NoContent() : NotFound();
 }

@@ -11,14 +11,15 @@ namespace ScriptumLux.BLL.Mappings
             // Entity -> DTO
             CreateMap<History, HistoryDto>();
 
-            // DTO -> Entity (ignore navigation and keys)
+            // CreateDto -> Entity (preserve UserId, MovieId, ViewedAt)
             CreateMap<HistoryCreateDto, History>()
-                .ForMember(dest => dest.User, opt => opt.Ignore())
-                .ForMember(dest => dest.UserId, opt => opt.Ignore())
-                .ForMember(dest => dest.Movie, opt => opt.Ignore());
+                .ForMember(dest => dest.User,   opt => opt.Ignore())
+                .ForMember(dest => dest.Movie,  opt => opt.Ignore());
 
+            // UpdateDto -> Entity (only ViewedAt)
             CreateMap<HistoryUpdateDto, History>()
-                .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+                .ForMember(dest => dest.ViewedAt, opt => opt.Condition(src => src.ViewedAt.HasValue))
+                .ForAllMembers(opt => opt.Ignore()); // Corrected this line
         }
     }
 }
