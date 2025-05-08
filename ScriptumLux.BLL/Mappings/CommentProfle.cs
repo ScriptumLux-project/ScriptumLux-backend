@@ -8,9 +8,18 @@ namespace ScriptumLux.BLL.Mappings
     {
         public CommentProfile()
         {
+            CreateMap<CommentCreateDto, Comment>()
+                .ForMember(c => c.CommentId, opt => opt.Ignore())
+                .ForMember(c => c.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(c => c.Movie, opt => opt.Ignore())
+                .ForMember(c => c.User, opt => opt.Ignore());
+
+            // Entity → DTO
             CreateMap<Comment, CommentDto>();
-            CreateMap<Comment, CommentCreateDto>().ReverseMap();
-            CreateMap<Comment, CommentUpdateDto>().ReverseMap();
+
+            // Update DTO → Entity
+            CreateMap<CommentUpdateDto, Comment>()
+                .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

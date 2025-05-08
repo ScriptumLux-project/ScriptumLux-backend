@@ -26,6 +26,8 @@ builder.Services.AddScoped<IPlaylistMovieService, PlaylistMovieService>();
 builder.Services.AddScoped<ITimecodeService, TimecodeService>();
 builder.Services.AddScoped<IHistoryService, HistoryService>();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 // 4. Add controllers
 builder.Services.AddControllers();
 
