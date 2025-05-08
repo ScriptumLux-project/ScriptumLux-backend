@@ -9,9 +9,16 @@ namespace ScriptumLux.BLL.Mappings
     {
         public UserProfile()
         {
+            CreateMap<UserCreateDto, User>()
+                .ForMember(u => u.UserId,       opt => opt.Ignore())
+                .ForMember(u => u.PasswordHash, opt => opt.Ignore())
+                .ForMember(u => u.PasswordSalt, opt => opt.Ignore())
+                .ForMember(u => u.IsBanned,     opt => opt.MapFrom(_ => false));
+
             CreateMap<User, UserDto>();
-            CreateMap<User, UserCreateDto>().ReverseMap();
-            CreateMap<User, UserUpdateDto>().ReverseMap();
+
+            CreateMap<UserUpdateDto, User>()
+                .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

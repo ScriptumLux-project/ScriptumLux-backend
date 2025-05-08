@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScriptumLux.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a562d2c7953c7a3f759fde7f9eaeab057a98a0c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee263795816c2b6cd974f52c575d3a876d516dcc")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScriptumLux.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScriptumLux.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

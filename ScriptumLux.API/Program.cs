@@ -1,21 +1,37 @@
+// File: ScriptumLux.API/Program.cs
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using ScriptumLux.BLL;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using ScriptumLux.API.Settings;
 using ScriptumLux.BLL.Interfaces;
+using ScriptumLux.BLL.Mappings;
 using ScriptumLux.BLL.Services;
 using ScriptumLux.DAL;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Connection string and DbContext
-builder.Services.AddDbContext<ApplicationDbContext>(options => 
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
-                      ?? "Data Source=application.db"));
+// 1. Load configuration files (appsettings.json, appsettings.Development.json)
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                   .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+                   .AddEnvironmentVariables();
 
-// 2. AutoMapper configuration (scans BLL.MappingProfiles)
-builder.Services.AddAutoMapper(typeof(AutoMapperConfig).Assembly);
+// 2. Bind JWT settings
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
 
-// 3. Register BLL services
+// 3. Add DbContext (SQLite)
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    var conn = builder.Configuration.GetConnectionString("DefaultConnection");
+    options.UseSqlite(conn);
+});
+
+// 4. AutoMapper
+builder.Services.AddAutoMapper(typeof(UserProfile).Assembly);
+
+// 5. Register BLL services
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
@@ -26,12 +42,35 @@ builder.Services.AddScoped<IPlaylistMovieService, PlaylistMovieService>();
 builder.Services.AddScoped<ITimecodeService, TimecodeService>();
 builder.Services.AddScoped<IHistoryService, HistoryService>();
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+// 6. Configure Authentication & JWT Bearer
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme    = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    var jwtOptions = builder.Configuration.GetSection("Jwt").Get<JwtSettings>();
+    var key         = Encoding.UTF8.GetBytes(jwtOptions.Key);
 
-// 4. Add controllers
+    options.RequireHttpsMetadata = true;
+    options.SaveToken            = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer           = true,
+        ValidIssuer              = jwtOptions.Issuer,
+        ValidateAudience         = true,
+        ValidAudience            = jwtOptions.Audience,
+        ValidateLifetime         = true,
+        IssuerSigningKey         = new SymmetricSecurityKey(key),
+        ValidateIssuerSigningKey = true,
+    };
+});
+
+builder.Services.AddAuthorization();
+
+// 7. Add Controllers & Swagger
 builder.Services.AddControllers();
-
-// 5. Swagger for API documentation/testing
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -40,14 +79,14 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// 6. Ensure database is created and apply migrations
+// 8. Apply migrations
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();  // or EnsureCreated()
+    db.Database.Migrate();
 }
 
-// 7. Configure middleware
+// 9. Configure Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -55,6 +94,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

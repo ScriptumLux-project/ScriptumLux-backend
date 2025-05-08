@@ -8,9 +8,17 @@ namespace ScriptumLux.BLL.Mappings
     {
         public HistoryProfile()
         {
+            // Entity -> DTO
             CreateMap<History, HistoryDto>();
-            CreateMap<History, HistoryCreateDto>().ReverseMap();
-            CreateMap<History, HistoryUpdateDto>().ReverseMap();
+
+            // DTO -> Entity (ignore navigation and keys)
+            CreateMap<HistoryCreateDto, History>()
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.UserId, opt => opt.Ignore())
+                .ForMember(dest => dest.Movie, opt => opt.Ignore());
+
+            CreateMap<HistoryUpdateDto, History>()
+                .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }
