@@ -1275,11 +1275,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
+      "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
       "projectName": "ScriptumLux.BLL",
-      "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
+      "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
       "packagesPath": "C:\\Users\\greko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\obj\\",
+      "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1301,8 +1301,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {
-              "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj"
+            "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {
+              "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj"
             }
           }
         }

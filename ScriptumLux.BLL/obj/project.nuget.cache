@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l79LbnVvPqk=",
+  "dgSpecHash": "3099WPtD2eo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
+  "projectFilePath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\greko\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\greko\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

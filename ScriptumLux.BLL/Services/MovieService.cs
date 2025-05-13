@@ -50,6 +50,7 @@ public class MovieService : IMovieService
         return _mapper.Map<MovieDto>(entity);
     }
 
+
     public async Task<bool> DeleteAsync(int id)
     {
         var entity = await _context.Movies.FindAsync(id);

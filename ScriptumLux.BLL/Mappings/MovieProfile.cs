@@ -8,7 +8,11 @@ namespace ScriptumLux.BLL.Mappings
     {
         public MovieProfile()
         {
-            CreateMap<Movie, MovieDto>();
+            CreateMap<Movie, MovieDto>()
+                .ForMember(dest => dest.PosterUrl, opt => opt.MapFrom(src => src.PosterUrl))
+                .ForMember(dest => dest.VideoUrl, opt => opt.MapFrom(src => src.VideoUrl))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
+
             CreateMap<Movie, MovieCreateDto>().ReverseMap();
             CreateMap<Movie, MovieUpdateDto>().ReverseMap();
         }
