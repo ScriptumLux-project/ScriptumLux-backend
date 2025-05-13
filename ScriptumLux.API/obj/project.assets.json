@@ -4027,11 +4027,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.API\\ScriptumLux.API.csproj",
+      "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.API\\ScriptumLux.API.csproj",
       "projectName": "ScriptumLux.API",
-      "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.API\\ScriptumLux.API.csproj",
+      "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.API\\ScriptumLux.API.csproj",
       "packagesPath": "C:\\Users\\greko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.API\\obj\\",
+      "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4053,8 +4053,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj": {
-              "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj"
+            "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj": {
+              "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj"
             }
           }
         }
