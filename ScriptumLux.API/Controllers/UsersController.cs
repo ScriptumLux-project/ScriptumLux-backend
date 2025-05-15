@@ -37,7 +37,6 @@ namespace ScriptumLux.API.Controllers;
             return dto != null ? Ok(dto) : NotFound();
         }
 
-        // POST api/users/register
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserCreateDto dto)
         {
@@ -52,6 +51,7 @@ namespace ScriptumLux.API.Controllers;
                 return BadRequest(new { error = ex.Message });
             }
         }
+
 
         // POST api/users/login
         [HttpPost("login")]
