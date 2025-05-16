@@ -1,4 +1,3 @@
-// File: ScriptumLux.API/Program.cs
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +8,7 @@ using ScriptumLux.BLL.Mappings;
 using ScriptumLux.BLL.Services;
 using ScriptumLux.DAL;
 using Microsoft.OpenApi.Models;
+using ScriptumLux.BLL.AiExternal; // Добавлено для AI рекомендаций
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +19,9 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 
 // 2. Bind JWT settings
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
+
+// 2.1 Bind AI settings для рекомендательной системы
+builder.Services.Configure<AISettings>(builder.Configuration.GetSection("AI"));
 
 // 3. Add DbContext (SQLite)
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -40,6 +43,9 @@ builder.Services.AddScoped<IPlaylistService, PlaylistService>();
 builder.Services.AddScoped<IPlaylistMovieService, PlaylistMovieService>();
 builder.Services.AddScoped<ITimecodeService, TimecodeService>();
 builder.Services.AddScoped<IHistoryService, HistoryService>();
+
+// 5.1 Регистрация сервиса рекомендаций
+builder.Services.AddScoped<IMovieRecommendationService, MovieRecommendationService>();
 
 // 6. Configure Authentication & JWT Bearer
 builder.Services.AddAuthentication(options =>

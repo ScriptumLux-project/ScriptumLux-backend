@@ -344,3 +344,11 @@ C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\obj\Debug\net9.
 C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\obj\Debug\net9.0\ScriptumLux.API.pdb
 C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\obj\Debug\net9.0\ScriptumLux.API.genruntimeconfig.cache
 C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\obj\Debug\net9.0\ref\ScriptumLux.API.dll
+C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\bin\Debug\net9.0\Microsoft.Bcl.HashCode.dll
+C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\bin\Debug\net9.0\Microsoft.Extensions.AI.Abstractions.dll
+C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\bin\Debug\net9.0\Microsoft.Extensions.AI.Ollama.dll
+C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\bin\Debug\net9.0\Microsoft.Extensions.VectorData.Abstractions.dll
+C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\bin\Debug\net9.0\Microsoft.SemanticKernel.Abstractions.dll
+C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\bin\Debug\net9.0\Microsoft.SemanticKernel.Connectors.InMemory.dll
+C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\bin\Debug\net9.0\System.Net.Http.Json.dll
+C:\Users\greko\RiderProjects\ScriptumLux-backend\ScriptumLux.API\bin\Debug\net9.0\System.Numerics.Tensors.dll
