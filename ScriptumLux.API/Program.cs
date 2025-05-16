@@ -2,7 +2,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using ScriptumLux.API.Settings;
 using ScriptumLux.BLL.Interfaces;

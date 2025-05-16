@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScriptumLux.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+62f9fa2b7f8e13e4eb274c21690803342c67ab54")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+061d520a89d4551ad4983fa400958c76a0251404")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScriptumLux.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScriptumLux.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
