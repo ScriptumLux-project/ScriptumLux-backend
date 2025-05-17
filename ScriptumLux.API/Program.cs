@@ -1,4 +1,3 @@
-// File: ScriptumLux.API/Program.cs
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +40,19 @@ builder.Services.AddScoped<IPlaylistMovieService, PlaylistMovieService>();
 builder.Services.AddScoped<ITimecodeService, TimecodeService>();
 builder.Services.AddScoped<IHistoryService, HistoryService>();
 
-// 6. Configure Authentication & JWT Bearer
+// 6. Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy => policy
+            .WithOrigins("http://localhost:3000", "https://your-frontend-domain.com") 
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+    );
+});
+
+// 7. Configure Authentication & JWT Bearer
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -68,7 +79,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
-// 7. Add Controllers & Swagger
+// 8. Add Controllers & Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -78,14 +89,14 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// 8. Apply migrations
+// 9. Apply migrations
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     db.Database.Migrate();
 }
 
-// 9. Configure Middleware
+// 10. Configure Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -93,6 +104,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
+
+// Enable CORS
+app.UseCors("AllowFrontend");
+
 app.UseAuthentication();
 app.UseAuthorization();
 

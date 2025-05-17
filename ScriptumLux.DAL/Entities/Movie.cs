@@ -13,7 +13,6 @@ public class Movie
     public int ReleaseYear { get; set; }
     public double Rating { get; set; }
 
-    // Новый поля
     public string? PosterUrl { get; set; }
     public string? VideoUrl { get; set; }
     public string? Description { get; set; }

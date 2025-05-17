@@ -41,13 +41,11 @@ namespace ScriptumLux.BLL.Services
 
         public async Task<CommentDto> CreateAsync(CommentCreateDto dto)
         {
-            // Проверка существования родительских записей:
             var user = await _context.Users.FindAsync(dto.UserId)
                        ?? throw new ArgumentException($"User {dto.UserId} not found");
             var movie = await _context.Movies.FindAsync(dto.MovieId)
                         ?? throw new ArgumentException($"Movie {dto.MovieId} not found");
 
-            // Маппинг + привязка навигации
             var comment = _mapper.Map<Comment>(dto);
             comment.User = user;
             comment.Movie = movie;

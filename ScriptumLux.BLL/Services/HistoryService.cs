@@ -37,7 +37,6 @@ public class HistoryService : IHistoryService
 
         public async Task<HistoryDto> CreateAsync(HistoryCreateDto dto)
         {
-            // Validate foreign keys
             var user = await _context.Users.FindAsync(dto.UserId)
                 ?? throw new ArgumentException($"User {dto.UserId} not found");
             var movie = await _context.Movies.FindAsync(dto.MovieId)

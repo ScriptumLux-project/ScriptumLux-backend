@@ -16,7 +16,6 @@ public class MovieCreateDto
     [Required]
     public int GenreId { get; set; }
 
-    // Новые свойства
     public string? PosterUrl { get; set; }
     public string? VideoUrl { get; set; }
     public string? Description { get; set; }

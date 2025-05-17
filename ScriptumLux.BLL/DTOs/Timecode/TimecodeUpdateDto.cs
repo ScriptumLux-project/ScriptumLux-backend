@@ -9,6 +9,5 @@ public class TimecodeUpdateDto
 
     public string Label { get; set; }
 
-    // Теперь строка, парсим вручную в сервисе
     public string Timestamp { get; set; }
 }

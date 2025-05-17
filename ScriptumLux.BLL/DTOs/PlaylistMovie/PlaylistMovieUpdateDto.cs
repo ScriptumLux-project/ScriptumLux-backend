@@ -10,7 +10,6 @@ public class PlaylistMovieUpdateDto
     [Required]
     public int MovieId { get; set; }
 
-    // Допустим, что мы хотим обновить порядок фильма в плейлисте
-    public int? NewOrder { get; set; }  // Пример дополнительного поля для порядка
+    public int? NewOrder { get; set; } 
 
 }
