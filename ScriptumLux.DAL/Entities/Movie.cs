@@ -9,6 +9,8 @@ public class Movie
 
     [Required]
     public string? Title { get; set; }
+    
+    public string? Country { get; set; }
 
     public int ReleaseYear { get; set; }
     public double Rating { get; set; }

@@ -51,6 +51,7 @@ public class MovieService : IMovieService
             Title = dto.Title,
             ReleaseYear = dto.ReleaseYear,
             //Rating = dto.Rating,
+            Country = dto.Country,
             GenreId = genre.GenreId, // використовуємо ID знайденого/створеного жанру
             PosterUrl = dto.PosterUrl,
             VideoUrl = dto.VideoUrl,

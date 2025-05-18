@@ -9,6 +9,8 @@ public class MovieCreateDto
 
     [Required]
     public int ReleaseYear { get; set; }
+    
+    public string? Country { get; set; }
 
     //[Required]
    // public double Rating { get; set; }
