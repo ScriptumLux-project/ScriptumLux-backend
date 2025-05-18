@@ -5,7 +5,7 @@ public class MovieUpdateDto
     public string Title { get; set; }
     public int ReleaseYear { get; set; }
     public double Rating { get; set; }
-    public int GenreId { get; set; }
+    public string GenreName { get; set; }
 
     public string? PosterUrl { get; set; }
     public string? VideoUrl { get; set; }

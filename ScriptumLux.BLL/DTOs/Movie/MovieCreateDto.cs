@@ -10,11 +10,11 @@ public class MovieCreateDto
     [Required]
     public int ReleaseYear { get; set; }
 
-    [Required]
-    public double Rating { get; set; }
+    //[Required]
+   // public double Rating { get; set; }
 
     [Required]
-    public int GenreId { get; set; }
+    public string GenreName { get; set; }
 
     public string? PosterUrl { get; set; }
     public string? VideoUrl { get; set; }
