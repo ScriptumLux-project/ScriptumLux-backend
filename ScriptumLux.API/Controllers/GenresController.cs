@@ -16,8 +16,13 @@ public class GenresController : ControllerBase
         => Ok(await _service.GetAllAsync());
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> Get(int id) 
-        => OkOrNotFound(await _service.GetByIdAsync(id));
+    public async Task<IActionResult> Get(int id)
+    {
+        var genre = await _service.GetByIdAsync(id);
+        if (genre == null)
+            return NotFound();
+        return Ok(new { genre.GenreId, genre.Name });
+    }
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] GenreCreateDto dto)

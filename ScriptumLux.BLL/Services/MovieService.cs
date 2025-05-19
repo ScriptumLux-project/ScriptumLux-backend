@@ -67,6 +67,7 @@ public class MovieService : IMovieService
             Title = movie.Title,
             ReleaseYear = movie.ReleaseYear,
             Rating = movie.Rating,
+            Country = movie.Country,
             GenreId = movie.GenreId,
             PosterUrl = movie.PosterUrl,
             VideoUrl = movie.VideoUrl,
@@ -96,7 +97,8 @@ public class MovieService : IMovieService
         // Обновляем свойства фильма
         movie.Title = dto.Title;
         movie.ReleaseYear = dto.ReleaseYear;
-        movie.Rating = dto.Rating;
+        //movie.Rating = dto.Rating;
+        movie.Country = dto.Country;
         movie.GenreId = genre.GenreId;
         movie.PosterUrl = dto.PosterUrl;
         movie.VideoUrl = dto.VideoUrl;
@@ -110,6 +112,7 @@ public class MovieService : IMovieService
             Title = movie.Title,
             ReleaseYear = movie.ReleaseYear,
             Rating = movie.Rating,
+            Country = movie.Country,
             GenreId = movie.GenreId,
             PosterUrl = movie.PosterUrl,
             VideoUrl = movie.VideoUrl,
