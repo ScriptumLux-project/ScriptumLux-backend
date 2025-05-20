@@ -2,7 +2,6 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using ScriptumLux.BLL.DTOs.Comment;
 using ScriptumLux.BLL.Interfaces;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 
 namespace ScriptumLux.API.Controllers
