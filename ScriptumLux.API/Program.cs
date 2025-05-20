@@ -39,6 +39,7 @@ builder.Services.AddScoped<IPlaylistService, PlaylistService>();
 builder.Services.AddScoped<IPlaylistMovieService, PlaylistMovieService>();
 builder.Services.AddScoped<ITimecodeService, TimecodeService>();
 builder.Services.AddScoped<IHistoryService, HistoryService>();
+builder.Services.AddScoped<IAiService, AiService>();
 
 // 6. Configure CORS
 builder.Services.AddCors(options =>

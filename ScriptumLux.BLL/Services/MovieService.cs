@@ -20,14 +20,23 @@ public class MovieService : IMovieService
 
     public async Task<IEnumerable<MovieDto>> GetAllAsync()
     {
-        var list = await _context.Movies.Include(m => m.Genre).ToListAsync();
+        var list = await _context.Movies
+            .Include(m => m.Genre)
+            .Include(m => m.Comments)          // <— загружаем комментарии
+            .ThenInclude(c => c.User)     // опционально, если в CommentDto есть данные по юзеру
+            .ToListAsync();
+
         return _mapper.Map<IEnumerable<MovieDto>>(list);
     }
 
     public async Task<MovieDto?> GetByIdAsync(int id)
     {
-        var movie = await _context.Movies.Include(m => m.Genre)
+        var movie = await _context.Movies
+            .Include(m => m.Genre)
+            .Include(m => m.Comments)
+            .ThenInclude(c => c.User)
             .FirstOrDefaultAsync(m => m.MovieId == id);
+
         if (movie == null) return null;
         return _mapper.Map<MovieDto>(movie);
     }

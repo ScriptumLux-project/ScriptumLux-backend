@@ -9,7 +9,4 @@ public class CommentCreateDto
 
     [Required]
     public int MovieId { get; set; }
-    
-    [Required]
-    public int UserId { get; set; }
 }

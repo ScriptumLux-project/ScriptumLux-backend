@@ -1,7 +1,8 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using ScriptumLux.BLL.DTOs.Comment;
 using ScriptumLux.BLL.Interfaces;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ScriptumLux.API.Controllers
 {
@@ -31,19 +32,24 @@ namespace ScriptumLux.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create([FromBody] CommentCreateDto dto)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var created = await _service.CreateAsync(dto);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(userIdClaim, out var userId))
+                return Unauthorized();
+
+            var created = await _service.CreateAsync(dto, userId);
             return CreatedAtAction(nameof(Get), new { id = created.CommentId }, created);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] CommentUpdateDto dto)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var updated = await _service.UpdateAsync(id, dto);
@@ -57,4 +63,5 @@ namespace ScriptumLux.API.Controllers
             return success ? NoContent() : NotFound();
         }
     }
+
 }

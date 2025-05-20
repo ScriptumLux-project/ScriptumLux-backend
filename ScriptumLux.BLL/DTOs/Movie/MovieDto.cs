@@ -1,15 +1,21 @@
-namespace ScriptumLux.BLL.DTOs.Movie;
+using ScriptumLux.BLL.DTOs.Comment;
 
-public class MovieDto
+namespace ScriptumLux.BLL.DTOs.Movie
 {
-    public int MovieId { get; set; }
-    public string Title { get; set; }
-    public int ReleaseYear { get; set; }
-    public double Rating { get; set; }
-    public string Country { get; set; }
-    public int GenreId { get; set; }
+    public class MovieDto
+    {
+        public int MovieId { get; set; }
+        public string Title { get; set; }
+        public int ReleaseYear { get; set; }
+        public double Rating { get; set; }
+        public string Country { get; set; }
+        public int GenreId { get; set; }
 
-    public string? PosterUrl { get; set; }
-    public string? VideoUrl { get; set; }
-    public string? Description { get; set; }
+        public string? PosterUrl { get; set; }
+        public string? VideoUrl { get; set; }
+        public string? Description { get; set; }
+
+        // Добавляем комментарии
+        public IEnumerable<CommentDto> Comments { get; set; }
+    }
 }

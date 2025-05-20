@@ -36,22 +36,30 @@ namespace ScriptumLux.BLL.Services
                 .Include(c => c.User)
                 .Include(c => c.Movie)
                 .FirstOrDefaultAsync(c => c.CommentId == id);
+
             return entity == null ? null : _mapper.Map<CommentDto>(entity);
         }
 
-        public async Task<CommentDto> CreateAsync(CommentCreateDto dto)
+        public async Task<CommentDto> CreateAsync(CommentCreateDto dto, int userId)
         {
-            var user = await _context.Users.FindAsync(dto.UserId)
-                       ?? throw new ArgumentException($"User {dto.UserId} not found");
+            var user = await _context.Users.FindAsync(userId)
+                       ?? throw new ArgumentException($"User {userId} not found");
             var movie = await _context.Movies.FindAsync(dto.MovieId)
-                        ?? throw new ArgumentException($"Movie {dto.MovieId} not found");
+                       ?? throw new ArgumentException($"Movie {dto.MovieId} not found");
 
-            var comment = _mapper.Map<Comment>(dto);
-            comment.User = user;
-            comment.Movie = movie;
+            var comment = new Comment
+            {
+                Content   = dto.Content,
+                CreatedAt = DateTime.UtcNow,
+                UserId    = userId,
+                MovieId   = dto.MovieId
+            };
 
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
+
+            await _context.Entry(comment).Reference(c => c.User).LoadAsync();
+            await _context.Entry(comment).Reference(c => c.Movie).LoadAsync();
 
             return _mapper.Map<CommentDto>(comment);
         }
