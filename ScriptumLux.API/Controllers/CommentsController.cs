@@ -62,6 +62,14 @@ namespace ScriptumLux.API.Controllers
             var success = await _service.DeleteAsync(id);
             return success ? NoContent() : NotFound();
         }
+        
+        [HttpGet("movie/{movieId}")]
+        public async Task<IActionResult> GetByMovie(int movieId)
+        {
+            var list = await _service.GetByMovieIdAsync(movieId);
+            return Ok(list);
+        }
+
     }
 
 }
