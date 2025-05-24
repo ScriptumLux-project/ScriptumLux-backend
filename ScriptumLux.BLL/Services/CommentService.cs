@@ -102,9 +102,6 @@ namespace ScriptumLux.BLL.Services
             var entity = await _context.Comments.FindAsync(id);
             if (entity == null) return false;
             
-            if (entity.UserId != userId)
-                throw new UnauthorizedAccessException("You can only delete your own comments");
-
             _context.Comments.Remove(entity);
             await _context.SaveChangesAsync();
             return true;
