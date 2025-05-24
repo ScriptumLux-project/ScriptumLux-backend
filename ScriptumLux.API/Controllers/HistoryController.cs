@@ -12,7 +12,7 @@ public class HistoryController : ControllerBase
     public HistoryController(IHistoryService service) => _service = service;
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<HistoryDto>>> GetAll()
+    public async Task<ActionResult<List<HistoryDto>>> GetAll()
         => Ok(await _service.GetAllAsync());
 
     [HttpGet("{userId:int}/{movieId:int}")]
@@ -39,4 +39,9 @@ public class HistoryController : ControllerBase
     [HttpDelete("{userId:int}/{movieId:int}")]
     public async Task<IActionResult> Delete(int userId, int movieId)
         => await _service.DeleteAsync(userId, movieId) ? NoContent() : NotFound();
+
+    // Новый метод для удаления всей истории пользователя
+    [HttpDelete("user/{userId:int}")]
+    public async Task<IActionResult> DeleteUserHistory(int userId)
+        => await _service.DeleteUserHistoryAsync(userId) ? NoContent() : NotFound();
 }
