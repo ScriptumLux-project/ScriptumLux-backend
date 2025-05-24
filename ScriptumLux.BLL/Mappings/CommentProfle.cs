@@ -14,10 +14,11 @@ namespace ScriptumLux.BLL.Mappings
                 .ForMember(c => c.Movie, opt => opt.Ignore())
                 .ForMember(c => c.User, opt => opt.Ignore());
 
-            // Entity → DTO
-            CreateMap<Comment, CommentDto>();
+            CreateMap<Comment, CommentDto>()
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.Name))  // Замените на src.User.UserName если поле называется UserName
+                .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.User.Email))
+                .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.Movie.Title)); // Замените на src.Movie.Name если поле называется Name
 
-            // Update DTO → Entity
             CreateMap<CommentUpdateDto, Comment>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }

@@ -6,6 +6,7 @@ using ScriptumLux.DAL;
 using ScriptumLux.DAL.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ScriptumLux.BLL.Services
@@ -40,6 +41,18 @@ namespace ScriptumLux.BLL.Services
             return entity == null ? null : _mapper.Map<CommentDto>(entity);
         }
 
+        public async Task<IEnumerable<CommentDto>> GetByMovieIdAsync(int movieId)
+        {
+            var comments = await _context.Comments
+                .Include(c => c.User)
+                .Include(c => c.Movie)
+                .Where(c => c.MovieId == movieId)
+                .OrderByDescending(c => c.CreatedAt)
+                .ToListAsync();
+            
+            return _mapper.Map<IEnumerable<CommentDto>>(comments);
+        }
+
         public async Task<CommentDto> CreateAsync(CommentCreateDto dto, int userId)
         {
             var user = await _context.Users.FindAsync(userId)
@@ -49,35 +62,49 @@ namespace ScriptumLux.BLL.Services
 
             var comment = new Comment
             {
-                Content   = dto.Content,
+                Content = dto.Content,
                 CreatedAt = DateTime.UtcNow,
-                UserId    = userId,
-                MovieId   = dto.MovieId
+                UserId = userId,
+                MovieId = dto.MovieId
             };
 
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
 
-            await _context.Entry(comment).Reference(c => c.User).LoadAsync();
-            await _context.Entry(comment).Reference(c => c.Movie).LoadAsync();
+            var createdComment = await _context.Comments
+                .Include(c => c.User)
+                .Include(c => c.Movie)
+                .FirstOrDefaultAsync(c => c.CommentId == comment.CommentId);
 
-            return _mapper.Map<CommentDto>(comment);
+            return _mapper.Map<CommentDto>(createdComment);
         }
 
-        public async Task<CommentDto?> UpdateAsync(int id, CommentUpdateDto dto)
+        public async Task<CommentDto?> UpdateAsync(int id, CommentUpdateDto dto, int userId)
         {
-            var entity = await _context.Comments.FindAsync(id);
+            var entity = await _context.Comments
+                .Include(c => c.User)
+                .Include(c => c.Movie)
+                .FirstOrDefaultAsync(c => c.CommentId == id);
+            
             if (entity == null) return null;
+            
+            if (entity.UserId != userId)
+                throw new UnauthorizedAccessException("You can only edit your own comments");
 
-            _mapper.Map(dto, entity);
+            entity.Content = dto.Content;
             await _context.SaveChangesAsync();
+            
             return _mapper.Map<CommentDto>(entity);
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id, int userId)
         {
             var entity = await _context.Comments.FindAsync(id);
             if (entity == null) return false;
+            
+            if (entity.UserId != userId)
+                throw new UnauthorizedAccessException("You can only delete your own comments");
+
             _context.Comments.Remove(entity);
             await _context.SaveChangesAsync();
             return true;

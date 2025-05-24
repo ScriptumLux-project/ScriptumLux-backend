@@ -40,26 +40,44 @@ namespace ScriptumLux.API.Controllers
 
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (!int.TryParse(userIdClaim, out var userId))
-                return Unauthorized();
+                return Unauthorized("Invalid user token");
 
-            var created = await _service.CreateAsync(dto, userId);
-            return CreatedAtAction(nameof(Get), new { id = created.CommentId }, created);
+            try
+            {
+                var created = await _service.CreateAsync(dto, userId);
+                return CreatedAtAction(nameof(Get), new { id = created.CommentId }, created);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> Update(int id, [FromBody] CommentUpdateDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var updated = await _service.UpdateAsync(id, dto);
+            // Проверяем авторизацию пользователя
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(userIdClaim, out var userId))
+                return Unauthorized();
+
+            var updated = await _service.UpdateAsync(id, dto, userId);
             return updated == null ? NotFound() : Ok(updated);
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
-            var success = await _service.DeleteAsync(id);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(userIdClaim, out var userId))
+                return Unauthorized();
+
+            var success = await _service.DeleteAsync(id, userId);
             return success ? NoContent() : NotFound();
         }
         
@@ -69,7 +87,5 @@ namespace ScriptumLux.API.Controllers
             var list = await _service.GetByMovieIdAsync(movieId);
             return Ok(list);
         }
-
     }
-
 }
