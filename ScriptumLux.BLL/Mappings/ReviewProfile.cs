@@ -8,9 +8,12 @@ namespace ScriptumLux.BLL.Mappings
     {
         public ReviewProfile()
         {
-            CreateMap<Review, ReviewDto>();
-            CreateMap<Review, ReviewCreateDto>().ReverseMap();
-            CreateMap<Review, ReviewUpdateDto>().ReverseMap();
+            CreateMap<Review, ReviewDto>()
+                .ForMember(dest => dest.MovieTitle, opt => opt.MapFrom(src => src.Movie.Title))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.Name));
+            
+            CreateMap<ReviewCreateDto, Review>();
+            CreateMap<ReviewUpdateDto, Review>();
         }
     }
 }

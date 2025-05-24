@@ -4,9 +4,9 @@ namespace ScriptumLux.BLL.DTOs.Review;
 
 public class ReviewUpdateDto
 {
-    [Required]
-    public int ReviewId { get; set; }
-
-    public double? Rating { get; set; }
-    public string Content { get; set; }
+    [Range(1, 10, ErrorMessage = "Рейтинг должен быть от 1 до 10")]
+    public int Rating { get; set; }
+    
+    [MaxLength(2000, ErrorMessage = "Максимальная длина отзыва 2000 символов")]
+    public string? Content { get; set; }
 }

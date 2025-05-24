@@ -5,8 +5,6 @@ using ScriptumLux.BLL.Interfaces;
 using ScriptumLux.DAL;
 using ScriptumLux.DAL.Entities;
 
-namespace ScriptumLux.BLL.Services;
-
 public class MovieService : IMovieService
 {
     private readonly ApplicationDbContext _context;
@@ -20,13 +18,13 @@ public class MovieService : IMovieService
 
     public async Task<IEnumerable<MovieDto>> GetAllAsync()
     {
-        var list = await _context.Movies
+        var movies = await _context.Movies
             .Include(m => m.Genre)
-            .Include(m => m.Comments)          // <— загружаем комментарии
-            .ThenInclude(c => c.User)     // опционально, если в CommentDto есть данные по юзеру
+            .Include(m => m.Comments)
+            .ThenInclude(c => c.User)
             .ToListAsync();
 
-        return _mapper.Map<IEnumerable<MovieDto>>(list);
+        return _mapper.Map<IEnumerable<MovieDto>>(movies);
     }
 
     public async Task<MovieDto?> GetByIdAsync(int id)
@@ -43,45 +41,36 @@ public class MovieService : IMovieService
 
     public async Task<MovieDto> CreateAsync(MovieCreateDto dto)
     {
-        // Шукаємо жанр по назві
+        // Ищем жанр по названию
         var genre = await _context.Genres
             .FirstOrDefaultAsync(g => g.Name.ToLower() == dto.GenreName.ToLower());
 
-        // Якщо жанру немає — створюємо
+        // Если жанра нет — создаём
         if (genre == null)
         {
             genre = new Genre { Name = dto.GenreName };
             _context.Genres.Add(genre);
-            await _context.SaveChangesAsync(); // зберігаємо, щоб з’явився ID
+            await _context.SaveChangesAsync();
         }
 
-        var movie = new Movie
-        {
-            Title = dto.Title,
-            ReleaseYear = dto.ReleaseYear,
-            //Rating = dto.Rating,
-            Country = dto.Country,
-            GenreId = genre.GenreId, // використовуємо ID знайденого/створеного жанру
-            PosterUrl = dto.PosterUrl,
-            VideoUrl = dto.VideoUrl,
-            Description = dto.Description
-        };
+        var movie = _mapper.Map<Movie>(dto);
+        movie.GenreId = genre.GenreId;
+        
+        // Инициализируем поля рейтинга
+        movie.AverageRating = 0;
+        movie.TotalRatings = 0;
+        movie.TotalRatingSum = 0;
 
         _context.Movies.Add(movie);
         await _context.SaveChangesAsync();
 
-        return new MovieDto
-        {
-            MovieId = movie.MovieId,
-            Title = movie.Title,
-            ReleaseYear = movie.ReleaseYear,
-            Rating = movie.Rating,
-            Country = movie.Country,
-            GenreId = movie.GenreId,
-            PosterUrl = movie.PosterUrl,
-            VideoUrl = movie.VideoUrl,
-            Description = movie.Description
-        };
+        // Загружаем созданный фильм с жанром для корректного маппинга
+        var createdMovie = await _context.Movies
+            .Include(m => m.Genre)
+            .Include(m => m.Comments)
+            .FirstAsync(m => m.MovieId == movie.MovieId);
+
+        return _mapper.Map<MovieDto>(createdMovie);
     }
 
     public async Task<MovieDto?> UpdateAsync(int id, MovieUpdateDto dto)
@@ -100,13 +89,12 @@ public class MovieService : IMovieService
         {
             genre = new Genre { Name = dto.GenreName };
             _context.Genres.Add(genre);
-            await _context.SaveChangesAsync(); // нужно для получения GenreId
+            await _context.SaveChangesAsync();
         }
 
-        // Обновляем свойства фильма
+        // Обновляем только разрешенные поля (не трогаем рейтинг!)
         movie.Title = dto.Title;
         movie.ReleaseYear = dto.ReleaseYear;
-        //movie.Rating = dto.Rating;
         movie.Country = dto.Country;
         movie.GenreId = genre.GenreId;
         movie.PosterUrl = dto.PosterUrl;
@@ -115,27 +103,22 @@ public class MovieService : IMovieService
 
         await _context.SaveChangesAsync();
 
-        return new MovieDto
-        {
-            MovieId = movie.MovieId,
-            Title = movie.Title,
-            ReleaseYear = movie.ReleaseYear,
-            Rating = movie.Rating,
-            Country = movie.Country,
-            GenreId = movie.GenreId,
-            PosterUrl = movie.PosterUrl,
-            VideoUrl = movie.VideoUrl,
-            Description = movie.Description
-        };
+        // Загружаем обновленный фильм с жанром
+        var updatedMovie = await _context.Movies
+            .Include(m => m.Genre)
+            .Include(m => m.Comments)
+            .ThenInclude(c => c.User)
+            .FirstAsync(m => m.MovieId == id);
+
+        return _mapper.Map<MovieDto>(updatedMovie);
     }
-
-
 
     public async Task<bool> DeleteAsync(int id)
     {
-        var entity = await _context.Movies.FindAsync(id);
-        if (entity == null) return false;
-        _context.Movies.Remove(entity);
+        var movie = await _context.Movies.FindAsync(id);
+        if (movie == null) return false;
+        
+        _context.Movies.Remove(movie);
         await _context.SaveChangesAsync();
         return true;
     }
