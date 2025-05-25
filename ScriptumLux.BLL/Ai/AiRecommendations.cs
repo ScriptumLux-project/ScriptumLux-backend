@@ -14,7 +14,7 @@ public class AiRecommendations : AiBase
     {
         await GenerateEmbeddings(new List<Func<VectorizedMovie, string>>
         {
-            vectorizedMovie => vectorizedMovie.Title,
+            //vectorizedMovie => vectorizedMovie.Title,
             //vectorizedMovie => vectorizedMovie.Genre,
             vectorizedMovie => vectorizedMovie.Description
         });

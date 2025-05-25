@@ -9,5 +9,5 @@ public interface IHistoryService
     Task<HistoryDto> CreateAsync(HistoryCreateDto dto);
     Task<HistoryDto> UpdateAsync(int userId, int movieId, HistoryUpdateDto dto);
     Task<bool> DeleteAsync(int userId, int movieId);
-    Task<bool> DeleteUserHistoryAsync(int userId); // Новый метод
+    Task<bool> DeleteUserHistoryAsync(int userId); 
 }

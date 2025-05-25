@@ -12,9 +12,6 @@ public class MovieCreateDto
     
     public string? Country { get; set; }
 
-    //[Required]
-   // public double Rating { get; set; }
-
     [Required]
     public string GenreName { get; set; }
 

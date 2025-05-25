@@ -76,7 +76,6 @@ public class HistoryService : IHistoryService
         return true;
     }
 
-    // Новый метод для удаления всей истории пользователя
     public async Task<bool> DeleteUserHistoryAsync(int userId)
     {
         var userRecords = await _context.HistoryRecords

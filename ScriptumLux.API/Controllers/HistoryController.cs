@@ -40,7 +40,6 @@ public class HistoryController : ControllerBase
     public async Task<IActionResult> Delete(int userId, int movieId)
         => await _service.DeleteAsync(userId, movieId) ? NoContent() : NotFound();
 
-    // Новый метод для удаления всей истории пользователя
     [HttpDelete("user/{userId:int}")]
     public async Task<IActionResult> DeleteUserHistory(int userId)
         => await _service.DeleteUserHistoryAsync(userId) ? NoContent() : NotFound();

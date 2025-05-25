@@ -41,11 +41,9 @@ public class MovieService : IMovieService
 
     public async Task<MovieDto> CreateAsync(MovieCreateDto dto)
     {
-        // Ищем жанр по названию
         var genre = await _context.Genres
             .FirstOrDefaultAsync(g => g.Name.ToLower() == dto.GenreName.ToLower());
 
-        // Если жанра нет — создаём
         if (genre == null)
         {
             genre = new Genre { Name = dto.GenreName };
@@ -56,7 +54,6 @@ public class MovieService : IMovieService
         var movie = _mapper.Map<Movie>(dto);
         movie.GenreId = genre.GenreId;
         
-        // Инициализируем поля рейтинга
         movie.AverageRating = 0;
         movie.TotalRatings = 0;
         movie.TotalRatingSum = 0;
@@ -64,7 +61,6 @@ public class MovieService : IMovieService
         _context.Movies.Add(movie);
         await _context.SaveChangesAsync();
 
-        // Загружаем созданный фильм с жанром для корректного маппинга
         var createdMovie = await _context.Movies
             .Include(m => m.Genre)
             .Include(m => m.Comments)
@@ -81,7 +77,6 @@ public class MovieService : IMovieService
         if (movie == null)
             return null;
 
-        // Находим или создаём жанр по имени
         var genre = await _context.Genres
             .FirstOrDefaultAsync(g => g.Name.ToLower() == dto.GenreName.ToLower());
 
@@ -92,7 +87,6 @@ public class MovieService : IMovieService
             await _context.SaveChangesAsync();
         }
 
-        // Обновляем только разрешенные поля (не трогаем рейтинг!)
         movie.Title = dto.Title;
         movie.ReleaseYear = dto.ReleaseYear;
         movie.Country = dto.Country;
@@ -103,7 +97,6 @@ public class MovieService : IMovieService
 
         await _context.SaveChangesAsync();
 
-        // Загружаем обновленный фильм с жанром
         var updatedMovie = await _context.Movies
             .Include(m => m.Genre)
             .Include(m => m.Comments)

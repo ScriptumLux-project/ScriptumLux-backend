@@ -15,7 +15,6 @@ public interface IReviewService
     Task<ReviewDto?> UpdateAsync(int id, ReviewUpdateDto dto);
     Task<bool> DeleteAsync(int id);
     
-    // Методы для работы с рейтингом
     Task<MovieRatingDto> GetMovieRatingAsync(int movieId);
     Task<bool> UserHasReviewedMovieAsync(int userId, int movieId);
 }

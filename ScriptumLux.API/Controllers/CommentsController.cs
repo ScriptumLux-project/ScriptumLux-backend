@@ -60,7 +60,6 @@ namespace ScriptumLux.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // Проверяем авторизацию пользователя
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (!int.TryParse(userIdClaim, out var userId))
                 return Unauthorized();

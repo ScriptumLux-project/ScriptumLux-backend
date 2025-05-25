@@ -8,7 +8,7 @@ public class ReviewDto
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public int MovieId { get; set; }
-    public string MovieTitle { get; set; } // Для удобства отображения
+    public string MovieTitle { get; set; } 
     public int UserId { get; set; }
-    public string UserName { get; set; } // Для удобства отображения
+    public string UserName { get; set; } 
 }

@@ -15,16 +15,12 @@ public class Movie
 
     public int ReleaseYear { get; set; }
     
-    // УДАЛЯЕМ поле Rating - теперь оно будет вычисляемым
-    // public double Rating { get; set; } // УБИРАЕМ ЭТО ПОЛЕ!
-    
-    // Вместо этого добавляем поля для системы рейтинга
     [Column(TypeName = "decimal(3,2)")]
-    public decimal AverageRating { get; set; } = 0; // Средний рейтинг (например, 7.85)
+    public decimal AverageRating { get; set; } = 0; 
     
-    public int TotalRatings { get; set; } = 0; // Общее количество оценок
+    public int TotalRatings { get; set; } = 0;
     
-    public int TotalRatingSum { get; set; } = 0; // Сумма всех оценок для быстрого пересчета
+    public int TotalRatingSum { get; set; } = 0; 
 
     public string? PosterUrl { get; set; }
     public string? VideoUrl { get; set; }

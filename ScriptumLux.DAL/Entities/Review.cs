@@ -8,9 +8,9 @@ public class Review
     public int ReviewId { get; set; }
 
     [Range(1, 10, ErrorMessage = "Рейтинг должен быть от 1 до 10")]
-    public int Rating { get; set; } // Изменил на int вместо double для точности
+    public int Rating { get; set; }
 
-    public string? Content { get; set; } // Сделал nullable, так как отзыв может быть только с рейтингом
+    public string? Content { get; set; }
     
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;

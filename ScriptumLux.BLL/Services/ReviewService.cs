@@ -76,7 +76,6 @@ public class ReviewService : IReviewService
 
     public async Task<ReviewDto> CreateAsync(ReviewCreateDto dto)
     {
-        // Проверяем, есть ли уже отзыв от этого пользователя на этот фильм
         var existingReview = await _context.Reviews
             .FirstOrDefaultAsync(r => r.UserId == dto.UserId && r.MovieId == dto.MovieId);
             
@@ -85,13 +84,11 @@ public class ReviewService : IReviewService
             throw new InvalidOperationException("Пользователь уже оставил отзыв на этот фильм");
         }
 
-        // Используем ExecutionStrategy для обработки транзакций
         return await _context.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                // Создаем отзыв
                 var review = _mapper.Map<Review>(dto);
                 review.CreatedAt = DateTime.UtcNow;
                 review.UpdatedAt = DateTime.UtcNow;
@@ -99,12 +96,10 @@ public class ReviewService : IReviewService
                 _context.Reviews.Add(review);
                 await _context.SaveChangesAsync();
 
-                // Обновляем рейтинг фильма
                 await UpdateMovieRatingAsync(dto.MovieId);
                 
                 await transaction.CommitAsync();
                 
-                // Получаем созданный отзыв с включенными данными
                 var createdReview = await _context.Reviews
                     .Include(r => r.User)
                     .Include(r => r.Movie)
@@ -125,7 +120,6 @@ public class ReviewService : IReviewService
         var review = await _context.Reviews.FindAsync(id);
         if (review == null) return null;
 
-        // Используем ExecutionStrategy для обработки транзакций
         return await _context.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
@@ -139,12 +133,10 @@ public class ReviewService : IReviewService
                 _context.Reviews.Update(review);
                 await _context.SaveChangesAsync();
 
-                // Обновляем рейтинг фильма (всегда, а не только при изменении рейтинга)
                 await UpdateMovieRatingAsync(review.MovieId);
                 
                 await transaction.CommitAsync();
                 
-                // Получаем обновленный отзыв с включенными данными
                 var updatedReview = await _context.Reviews
                     .Include(r => r.User)
                     .Include(r => r.Movie)
@@ -165,7 +157,6 @@ public class ReviewService : IReviewService
         var review = await _context.Reviews.FindAsync(id);
         if (review == null) return false;
 
-        // Используем ExecutionStrategy для обработки транзакций
         return await _context.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
@@ -176,7 +167,6 @@ public class ReviewService : IReviewService
                 _context.Reviews.Remove(review);
                 await _context.SaveChangesAsync();
 
-                // Обновляем рейтинг фильма
                 await UpdateMovieRatingAsync(movieId);
                 
                 await transaction.CommitAsync();
@@ -221,10 +211,8 @@ public class ReviewService : IReviewService
             .AnyAsync(r => r.UserId == userId && r.MovieId == movieId);
     }
 
-    // Приватный метод для обновления рейтинга фильма
     private async Task UpdateMovieRatingAsync(int movieId)
     {
-        // Используем отдельный контекст для избежания конфликтов отслеживания
         var movie = await _context.Movies
             .FirstOrDefaultAsync(m => m.MovieId == movieId);
             
@@ -233,7 +221,6 @@ public class ReviewService : IReviewService
             throw new InvalidOperationException($"Фильм с ID {movieId} не найден");
         }
 
-        // Получаем все отзывы для данного фильма
         var reviews = await _context.Reviews
             .Where(r => r.MovieId == movieId)
             .Select(r => r.Rating)
@@ -260,7 +247,6 @@ public class ReviewService : IReviewService
         }
         catch (DbUpdateConcurrencyException ex)
         {
-            // Логируем ошибку конкурентного доступа
             throw new InvalidOperationException($"Ошибка при обновлении рейтинга фильма {movieId}: {ex.Message}", ex);
         }
     }
