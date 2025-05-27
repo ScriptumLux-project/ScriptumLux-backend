@@ -18,7 +18,7 @@ public class AiController : ControllerBase
     }
 
     [HttpGet("similar/{movieId}")]
-    public async Task<IActionResult> GetSimilarMovies(int movieId, CancellationToken cancellationToken, [FromQuery] uint maxResults = 3)
+    public async Task<IActionResult> GetSimilarMovies(int movieId, CancellationToken cancellationToken, [FromQuery] uint maxResults = 6)
     {
         var similarMovies = await _aiService.GetSimilarMovies(movieId, maxResults);
 

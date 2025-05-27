@@ -22,7 +22,7 @@ using Microsoft.Extensions.Configuration;
             //Uri aiUri = new Uri("http://192.168.62.86:44444");
             Uri aiUri = new Uri("http://127.0.0.1:11434");
 
-            string model = "deepseek-r1:14b";
+            string model = "nomic-embed-text:v1.5";
 
             List<VectorizedMovie> movies = GetVectorizedMovies().Result;
 
