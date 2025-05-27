@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {}
+    "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {
+    "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
         "projectName": "ScriptumLux.DAL",
-        "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
+        "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
         "packagesPath": "C:\\Users\\greko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\obj\\",
+        "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

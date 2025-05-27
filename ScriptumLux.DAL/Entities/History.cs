@@ -2,7 +2,6 @@ namespace ScriptumLux.DAL.Entities;
 
 public class History
 {
-    // Composite key configured in DbContext
     public int UserId { get; set; }
     public User User { get; set; }
 

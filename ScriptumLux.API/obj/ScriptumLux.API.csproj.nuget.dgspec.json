@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.API\\ScriptumLux.API.csproj": {}
+    "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.API\\ScriptumLux.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.API\\ScriptumLux.API.csproj": {
+    "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.API\\ScriptumLux.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.API\\ScriptumLux.API.csproj",
+        "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.API\\ScriptumLux.API.csproj",
         "projectName": "ScriptumLux.API",
-        "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.API\\ScriptumLux.API.csproj",
+        "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.API\\ScriptumLux.API.csproj",
         "packagesPath": "C:\\Users\\greko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.API\\obj\\",
+        "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj": {
-                "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj"
+              "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj": {
+                "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj"
               }
             }
           }
@@ -55,6 +55,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -72,6 +80,14 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.9.0, )"
             }
           },
           "imports": [
@@ -97,14 +113,14 @@
         }
       }
     },
-    "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj": {
+    "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
         "projectName": "ScriptumLux.BLL",
-        "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
+        "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\ScriptumLux.BLL.csproj",
         "packagesPath": "C:\\Users\\greko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.BLL\\obj\\",
+        "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -126,8 +142,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {
-                "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj"
+              "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {
+                "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj"
               }
             }
           }
@@ -147,6 +163,24 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.Extensions.AI.Ollama": {
+              "target": "Package",
+              "version": "[9.1.0-preview.1.25064.3, )"
+            },
+            "Microsoft.Extensions.VectorData.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0-preview.1.24523.1, )"
+            },
+            "Microsoft.SemanticKernel.Connectors.InMemory": {
+              "target": "Package",
+              "version": "[1.30.0-preview, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -167,14 +201,14 @@
         }
       }
     },
-    "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {
+    "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
         "projectName": "ScriptumLux.DAL",
-        "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
+        "projectPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
         "packagesPath": "C:\\Users\\greko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\obj\\",
+        "outputPath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

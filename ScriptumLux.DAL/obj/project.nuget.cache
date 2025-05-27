@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JBgcEQgDKKI=",
+  "dgSpecHash": "y6rGVqXm+Tc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
+  "projectFilePath": "C:\\Users\\greko\\RiderProjects\\ScriptumLux-backend\\ScriptumLux.DAL\\ScriptumLux.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\greko\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\greko\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
